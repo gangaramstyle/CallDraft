@@ -46,7 +46,7 @@ const Row = ({ row }) => {
 
 const Cell = ({ date, shift, render }) => {
   if (shift === "date") {
-    return <td>
+    return <td className={styles.date}>
       {render.toLocaleString(DateTime.DATE_HUGE)}
     </td>
   }

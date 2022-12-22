@@ -1,4 +1,9 @@
 .list {
   width: 30vw;
   height: 100vh;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  font-size: 0.8rem;
 }
+

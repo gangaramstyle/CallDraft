@@ -1,6 +1,7 @@
 .table {
-  width: 100%;
+  width: 69vw;
   border-spacing: 0;
+  box-sizing: border-box;
 }
 
 .table > * {
@@ -28,6 +29,14 @@
 .even {
 }
 
+.table thead {
+  top: 0;
+}
+
 thead tr > * + * {
   text-align: center;
+}
+
+.date {
+  font-size: 0.8rem;
 }

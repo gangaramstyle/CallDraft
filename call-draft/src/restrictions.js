@@ -247,7 +247,7 @@ export const mapConstraintToMessage = {
     "queryBelowHUPDayFloatCap": "Max HUP day shifts",
     "queryBelowPAHHolidayDayFloatCap": "Max PAH holiday day shifts",
     "queryBelowPAHDayFloatCap": "Max PAH day shifts",
-    "queryBelowBodyHolidayCap": "Max body shifts",
+    "queryBelowBodyHolidayCap": "Max holiday body shifts",
     "queryBelowBodyCap": "Max body shifts",
     "queryBelowHUPHolidayNightFloatCap": "Max HUP holiday night shifts",
     "queryBelowHUPNightFloatCap": "Max HUP night shifts",

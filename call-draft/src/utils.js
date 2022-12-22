@@ -33,7 +33,7 @@ export const mod = function (n, m) {
   return ((n % m) + m) % m;
 }
 
-export const isHoliday = (day) => day.weekday !== 6 && day.weekday !== 7
+export const isHoliday = (day) => coerceLuxon(day).weekday !== 6 && coerceLuxon(day).weekday !== 7
 
 export const weekNumber = day => {
   const date = coerceLuxon(day)

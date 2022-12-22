@@ -21,25 +21,38 @@ const Picker = ({ assigned, date, shift, close }) => {
   const {preferredToWork, neutral, softRestricted, hardRestricted} = splitResidents(residents)(date)(shift)
 
   const assignResident = name => () => {
-      close()
-      dispatch({
+    const func = async () => dispatch({
       type: "assignShift",
       data: {
         name: name,
         shift,
         date,
       }})
-    }
+    close()
+    setTimeout(func, 10)
+  }
+
+  const clearShift = () => {
+    const func = async () => dispatch({
+      type: "clearShift",
+      data: {
+        shift,
+        date,
+      }})
+    close()
+    setTimeout(func, 10)
+  }
 
   return <div className={styles.parent}>
     <TiWaves/>
     <div ref={ref} className={styles.picker}>
-      <h3>{date.toLocaleString(DateTime.DATE_HUGE)} – { shift }</h3>
+      <h3>{date.toLocaleString(DateTime.DATE_HUGE)} – { shift } { assigned && <span> – { assigned } <button onClick={clearShift}>Clear</button></span> } </h3>
       <div className={styles.container}>
         <div className={styles.left}>
           <h4>Prefer to work</h4>
           <div className={styles.preferred}>
             { preferredToWork.map(r => <Resident
+              key={r.name}
               name={r.name}
               constraints={r.preferred}
               assign={assignResident(r.name)}
@@ -48,6 +61,7 @@ const Picker = ({ assigned, date, shift, close }) => {
           <h4>Neutral</h4>
           <div className={styles.neutral}>
             { neutral.map(r => <Resident
+              key={r.name}
               name={r.name}
               constraints={r.constraints}
               assign={assignResident(r.name)}
@@ -58,6 +72,7 @@ const Picker = ({ assigned, date, shift, close }) => {
           <h4>Preferred not</h4>
           <div className={styles.soft_restricted}>
               { softRestricted.map(r => <Resident
+                key={r.name}
                 name={r.name}
                 constraints={r.constraints}
                 assign={assignResident(r.name)}
@@ -66,6 +81,7 @@ const Picker = ({ assigned, date, shift, close }) => {
           <h4> Restricted </h4>
           <div className={styles.hard_restricted}>
               { hardRestricted.map(r => <Resident
+                key={r.name}
                 name={r.name}
                 constraints={r.constraints}
                 assign={assignResident(r.name)}
@@ -86,7 +102,7 @@ const Resident = ({ name, constraints, assign }) =>
   </button>
   <div className={styles.constraints}>
     { constraints.map(c =>
-      <span> {mapConstraintToMessage[c]} </span>
+      <span key={c}> {mapConstraintToMessage[c]} </span>
     )}
   </div>
 </div>

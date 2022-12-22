@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { DateTime } from 'luxon'
 
 import { useEngine, residentsView } from '../engine/context'
@@ -13,18 +13,27 @@ import styles from './list.module.css'
 
 const List = () => {
   const engine = useEngine()
-  const { requiredShifts, assignedShifts } = engine
 
-  if (Object.keys(assignedShifts).length === 0) {
+  const [sortedShiftsNeeded, setSortedShiftsNeeded] = useState([])
+
+  const refresh = useCallback(async set => {
+    const { requiredShifts, assignedShifts } = engine
+    const flatShifts = getFlatListOfShifts(requiredShifts)
+    const unfilledShifts = getUnfilledShifts(flatShifts)(assignedShifts)
+    const residents = residentsView(engine)
+    const shiftsNeeded = getAllUnrestrictedResidentsPerShift(unfilledShifts)(hardRestrictions)(residents)
+    shiftsNeeded.sort((a, b) => a.availableResidents.length - b.availableResidents.length)
+
+    setSortedShiftsNeeded(shiftsNeeded)
+  }, [engine])
+
+  useEffect(() => {
+    refresh()
+  }, [refresh])
+
+  if (sortedShiftsNeeded === undefined) {
     return <div/>
   }
-
-  const flatShifts = getFlatListOfShifts(requiredShifts)
-  const unfilledShifts = getUnfilledShifts(flatShifts)(assignedShifts)
-  const residents = residentsView(engine)
-
-  const shiftsNeeded = getAllUnrestrictedResidentsPerShift(unfilledShifts)(hardRestrictions)(residents)
-  const sortedShiftsNeeded = shiftsNeeded.sort((a, b) => a.availableResidents.length - b.availableResidents.length)
 
   return <div className={styles.list}>
     {

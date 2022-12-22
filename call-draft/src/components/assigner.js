@@ -19,7 +19,7 @@ const Assigner = ({ date, shift }) => {
       assigned={workingResident}
       date={date}
       shift={shift}
-      close={() => setOpen(false)}
+      close={async () => setOpen(false)}
     />
   }
 
