@@ -37,7 +37,7 @@ export const querySameDay = ({ assignedShifts }) => date => shift =>
   true
 )
 
-// shift is on the same day as a saturday night call
+// shift is on the same weekend as a saturday night call
 export const querySaturdayNightCallWeekend = ({ assignedShifts }) => date => shift =>
   assignedShifts.reduce((okay, s) =>
   okay &&
@@ -47,12 +47,6 @@ export const querySaturdayNightCallWeekend = ({ assignedShifts }) => date => shi
     ),
   true
 )
-
-// day shift is adjacent to a night shift
-// TODO: IMPLEMENT THIS
-
-// night shift is adjacent to a day shift
-// TODO: IMPLEMENT THIS
 
 // shift is between two assigned CHOP weeks
 
