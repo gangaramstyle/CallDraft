@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/call-draft/static/css/main.1aefc938.css",
-    "main.js": "/call-draft/static/js/main.68444425.js",
-    "index.html": "/call-draft/index.html",
-    "main.1aefc938.css.map": "/call-draft/static/css/main.1aefc938.css.map",
-    "main.68444425.js.map": "/call-draft/static/js/main.68444425.js.map"
+    "main.css": "/CallDraft/static/css/main.1aefc938.css",
+    "main.js": "/CallDraft/static/js/main.68444425.js",
+    "index.html": "/CallDraft/index.html",
+    "main.1aefc938.css.map": "/CallDraft/static/css/main.1aefc938.css.map",
+    "main.68444425.js.map": "/CallDraft/static/js/main.68444425.js.map"
   },
   "entrypoints": [
     "static/css/main.1aefc938.css",
