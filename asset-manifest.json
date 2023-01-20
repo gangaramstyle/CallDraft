@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/CallDraft/static/css/main.1aefc938.css",
-    "main.js": "/CallDraft/static/js/main.98798521.js",
+    "main.css": "/CallDraft/static/css/main.3884edfa.css",
+    "main.js": "/CallDraft/static/js/main.a4b69023.js",
     "index.html": "/CallDraft/index.html",
-    "main.1aefc938.css.map": "/CallDraft/static/css/main.1aefc938.css.map",
-    "main.98798521.js.map": "/CallDraft/static/js/main.98798521.js.map"
+    "main.3884edfa.css.map": "/CallDraft/static/css/main.3884edfa.css.map",
+    "main.a4b69023.js.map": "/CallDraft/static/js/main.a4b69023.js.map"
   },
   "entrypoints": [
-    "static/css/main.1aefc938.css",
-    "static/js/main.98798521.js"
+    "static/css/main.3884edfa.css",
+    "static/js/main.a4b69023.js"
   ]
 }
