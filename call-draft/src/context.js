@@ -9,10 +9,14 @@ import { sameDay, isHoliday } from './utils'
 import Papa from 'papaparse'
 
 import {
+  yearName,
   requiredShiftsURL,
   residentAssignedScheduleUrl,
   residentPreferencesUrl,
 } from './restrictions'
+
+const assignedShiftsLocalStorageKey = `assignedShifts-${yearName}`
+const assignedShiftsByResidentLocalStorageKey = `assignedShiftsByResident-${yearName}`
 
 const EngineContext = createContext(null)
 const EngineDispatchContext = createContext(null)
@@ -97,8 +101,8 @@ export const EngineProvider = ({ children }) => {
 
   const { assignedShifts, assignedShiftsByResident } = engine
   useEffect(() => {
-    localStorage.setItem("assignedShifts", JSON.stringify(assignedShifts));
-    localStorage.setItem("assignedShiftsByResident", JSON.stringify(assignedShiftsByResident));
+    localStorage.setItem(assignedShiftsLocalStorageKey, JSON.stringify(assignedShifts));
+    localStorage.setItem(assignedShiftsByResidentLocalStorageKey, JSON.stringify(assignedShiftsByResident));
   }, [assignedShifts, assignedShiftsByResident, dispatch]);
 
   return <EngineContext.Provider value={engine}>
@@ -193,8 +197,8 @@ const initialEngine = {
   focusedDate: null,
   focusedResident: null,
 
-  assignedShifts: JSON.parse(localStorage.getItem("assignedShifts")) || {},
-  assignedShiftsByResident: JSON.parse(localStorage.getItem("assignedShiftsByResident")) || {},
+  assignedShifts: JSON.parse(localStorage.getItem(assignedShiftsLocalStorageKey)) || {},
+  assignedShiftsByResident: JSON.parse(localStorage.getItem(assignedShiftsByResidentLocalStorageKey)) || {},
 }
 
 // reducers

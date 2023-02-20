@@ -1,6 +1,7 @@
 import * as generic from './generic'
-import { getPriorSaturday, getPriorSunday, getNextSaturday, getNextSunday, sameDay, isPartOfHolidayWeekend } from '../utils'
+import { getPriorXDay, getNextXDay, getPriorSaturday, getNextSunday, sameDay, isPartOfHolidayWeekend } from '../utils'
 
+export const yearName= "r3"
 export const requiredShiftsURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQdBkM4XlLYnuATduPs4eQBi77RNtIdaXX2HNVFPHzFgvl7tphlwcDYDiLs32RhDXuyIAZaMdFnJiAw/pub?gid=0&single=true&output=csv"
 export const residentAssignedScheduleUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQdBkM4XlLYnuATduPs4eQBi77RNtIdaXX2HNVFPHzFgvl7tphlwcDYDiLs32RhDXuyIAZaMdFnJiAw/pub?gid=2004341310&single=true&output=csv"
 export const residentPreferencesUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQdBkM4XlLYnuATduPs4eQBi77RNtIdaXX2HNVFPHzFgvl7tphlwcDYDiLs32RhDXuyIAZaMdFnJiAw/pub?gid=973200211&single=true&output=csv"
@@ -78,15 +79,14 @@ const querySaturdayNightCallWeekend = ({ assignedShifts }) => date => shift =>
 )
 
 // shift is between two assigned CHOP weeks
+
 const queryCHOP = ({ CHOP }) => date => shift =>
   CHOP.reduce((conflict, cp) =>
     conflict + (
-    sameDay(getPriorSaturday(cp), date)
-    || sameDay(getPriorSunday(cp), date)
-    || sameDay(getNextSaturday(cp), date)
-    || sameDay(getNextSunday(cp), date)),
+    sameDay(getPriorXDay(cp, date.weekData.weekday), date)
+    || sameDay(getNextXDay(cp, date.weekData.weekday), date)),
   0
-) < 2
+  ) < 2
 
 const queryBelowNeuroHolidayCap           = generic.floatCap("Neuro", true, PerShiftCaps)
 const queryBelowNeuroCap                  = generic.floatCap("Neuro", false, PerShiftCaps)
