@@ -28,6 +28,14 @@ export const getNextSaturday = coerceLuxonWrapper(day => day.plus({days: 6 - day
 // if given day is a Sunday, return the same Sunday
 export const getNextSunday = coerceLuxonWrapper(day => day.plus({days: 7 - day.weekday}))
 
+// get day prior to given day
+// if day is the same as the given day, return the same day
+export const getPriorXDay = (day, xDay) => coerceLuxon(day.minus({days: mod(day.weekday - xDay, 7) }))
+
+// get day after the given day
+// if day is the same as the given day, give the day the next week
+export const getNextXDay = (day, xDay) => coerceLuxon(day.plus({days: 7 - mod(day.weekday - xDay, 7) }))
+
 export const mod = function (n, m) {
   // mod function that handles negative numbers, usage: mod(num, modulous)
   return ((n % m) + m) % m;
