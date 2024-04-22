@@ -2,9 +2,13 @@ import * as generic from './generic'
 import { getPriorXDay, getNextXDay, getPriorSaturday, getNextSunday, sameDay, isPartOfHolidayWeekend } from '../utils'
 
 export const yearName = "r2"
-export const requiredShiftsURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQNefnctzjWPpE-rWcQyTesFq0GJaYjMQ-Ux20oO8bx-3GgLTCT7vkOxMzD0nq_dTviZ_SIyMMmlqt8/pub?gid=1433333551&single=true&output=csv"
-export const residentAssignedScheduleUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQNefnctzjWPpE-rWcQyTesFq0GJaYjMQ-Ux20oO8bx-3GgLTCT7vkOxMzD0nq_dTviZ_SIyMMmlqt8/pub?gid=530426204&single=true&output=csv"
-export const residentPreferencesUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQNefnctzjWPpE-rWcQyTesFq0GJaYjMQ-Ux20oO8bx-3GgLTCT7vkOxMzD0nq_dTviZ_SIyMMmlqt8/pub?gid=0&single=true&output=csv"
+// export const requiredShiftsURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQNefnctzjWPpE-rWcQyTesFq0GJaYjMQ-Ux20oO8bx-3GgLTCT7vkOxMzD0nq_dTviZ_SIyMMmlqt8/pub?gid=1433333551&single=true&output=csv"
+// export const residentAssignedScheduleUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQNefnctzjWPpE-rWcQyTesFq0GJaYjMQ-Ux20oO8bx-3GgLTCT7vkOxMzD0nq_dTviZ_SIyMMmlqt8/pub?gid=530426204&single=true&output=csv"
+// export const residentPreferencesUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQNefnctzjWPpE-rWcQyTesFq0GJaYjMQ-Ux20oO8bx-3GgLTCT7vkOxMzD0nq_dTviZ_SIyMMmlqt8/pub?gid=0&single=true&output=csv"
+
+export const requiredShiftsURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsvF-8mREle8q3pup7n785hpMAcKFYkAiBvQ-kIUMIdtN-MFTOM5vtN1vt-FwOk3_zx93d1z95sdNb/pub?gid=0&single=true&output=csv"
+export const residentAssignedScheduleUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsvF-8mREle8q3pup7n785hpMAcKFYkAiBvQ-kIUMIdtN-MFTOM5vtN1vt-FwOk3_zx93d1z95sdNb/pub?gid=1197904990&single=true&output=csv"
+export const residentPreferencesUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsvF-8mREle8q3pup7n785hpMAcKFYkAiBvQ-kIUMIdtN-MFTOM5vtN1vt-FwOk3_zx93d1z95sdNb/pub?gid=128226207&single=true&output=csv"
 
 const PerShiftCaps = {
   "REGULAR" : {

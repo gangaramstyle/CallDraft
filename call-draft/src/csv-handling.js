@@ -6,7 +6,7 @@ export const cleanResidentCSV = o => {
     name: o["What is your name? "],
     blackout: availableDates.filter(d => o[d] === "Blackout").map(parseFormsDate),
     preferNot: availableDates.filter(d => o[d] === "Prefer Not").map(parseFormsDate),
-    preferToWork: availableDates.filter(d => o[d] === "Prefer to work").map(parseFormsDate),
+    preferToWork: availableDates.filter(d => o[d] === "Prefer to Work").map(parseFormsDate),
   }
 }
 
