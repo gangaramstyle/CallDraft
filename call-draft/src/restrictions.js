@@ -1,8 +1,8 @@
 import {
   getTotalDifficulty,
   constraints,
-} from './years/r2'
-export * from './years/r2'
+} from './years/r3'
+export * from './years/r3'
 
 export const splitConstraints = constraints => {
   const constraintMap = constraints.reduce((acc, curr) => {
