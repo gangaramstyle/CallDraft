@@ -135,13 +135,14 @@ const engineReducer = (engine, action) => {
 
     case 'addPreferences': {
       engine.preferences = action.data
-
       engine.residents = action.data.map(d => ({
         ...d,
         ...engine.rotations.find(({ name }) => name === d.name),
       }))
+      console.log(engine.residents)
 
       const { assignedShifts } = engine
+
       if (Object.keys(assignedShifts).length === 0) {
         resetAllShifts(engine)
       }
