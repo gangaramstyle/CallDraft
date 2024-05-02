@@ -1,9 +1,18 @@
 import { DateTime } from 'luxon'
 
-export const parseFormsDate = d => DateTime.fromFormat(
-    d.replace(" ", "").replace("[", "").replace("]", ""),
-    "M/d/yyyy")
-
+export const parseFormsDate = d => {
+  let out = null;
+  if (d.includes("-")) {
+    out = DateTime.fromFormat(
+      d.replace(" ", "").replace("[", "").replace("]", ""),
+      "yyyy-MM-dd")
+  } else {
+    out = DateTime.fromFormat(
+      d.replace(" ", "").replace("[", "").replace("]", ""),
+      "M/d/yyyy")
+  }
+  return out
+}
 export const coerceLuxon = d => typeof d === "string" ? DateTime.fromISO(d) : d
 
 export const coerceLuxonWrapper = f => d => f(coerceLuxon(d))
