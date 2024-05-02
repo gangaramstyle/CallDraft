@@ -2,9 +2,9 @@ import * as generic from './generic'
 import { getPriorSaturday, getNextSunday, isPartOfHolidayWeekend } from '../utils'
 
 export const yearName="r4"
-export const requiredShiftsURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSZ8POx_2ekDFfj-3rHdkpuonPJGM8eTfAccsC_OjiqWTo3C22rDkH-fF6FEBS3CxtsqdukyplaiJKb/pub?gid=0&single=true&output=csv"
-export const residentAssignedScheduleUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSZ8POx_2ekDFfj-3rHdkpuonPJGM8eTfAccsC_OjiqWTo3C22rDkH-fF6FEBS3CxtsqdukyplaiJKb/pub?gid=1947318660&single=true&output=csv"
-export const residentPreferencesUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSZ8POx_2ekDFfj-3rHdkpuonPJGM8eTfAccsC_OjiqWTo3C22rDkH-fF6FEBS3CxtsqdukyplaiJKb/pub?gid=396610078&single=true&output=csv"
+export const requiredShiftsURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR6ahvLxZhCukJIN0AK1dXZwmZ8idtPym02o_E4l_hiDWlNCBp7Ftr-5xslYMm1S85CRuaNUthdzYfF/pub?gid=0&single=true"+"&output=csv"
+export const residentAssignedScheduleUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQRyTlfhQIbO6iIybwZhqQz_-0kHIMvKisppCaG8jiG9XpRoO_SJ5ij_Xrj9mJnb3F3h2GFYnayCKFv/pub?gid=0&single=true"+"&output=csv"
+export const residentPreferencesUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTRtc9wyRiccEHKAsbz_5FGaiV4MMOkZQsfGe_LuetDoydmzdpFMK45wsvUJ1plNR_55YGuF9Sib1XW/pub?gid=429705941&single=true"+"&output=csv"
 
 const PerShiftCaps = {
   "REGULAR" : {
