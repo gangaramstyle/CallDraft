@@ -18,7 +18,8 @@ export const extractRotations = schedule => ({
   PP: Object.keys(schedule).filter(k => k !== "name" && schedule[k] === "PP").map(parseFormsDate),
   AIRP: Object.keys(schedule).filter(k => k !== "name" && schedule[k] === "AIRP").map(parseFormsDate),
   IR: Object.keys(schedule).filter(k => k !== "name" && schedule[k] !== null && (schedule[k].split(" ").findIndex(i => i === "IR") !== -1)).map(parseFormsDate),
-  VAC: Object.keys(schedule).filter(k => k !== "name" && schedule[k] === "Vac").map(parseFormsDate),
-  GLOBAL: Object.keys(schedule).filter(k => k !== "name" && schedule[k] === "Global").map(parseFormsDate),
+  VAC: Object.keys(schedule).filter(k => k !== "name" && (schedule[k] === "Vac" || schedule[k] === "vacation")).map(parseFormsDate),
+  FMLA: Object.keys(schedule).filter(k => k !== "name" && schedule[k] === "FMLA").map(parseFormsDate),
+  GLOBAL: Object.keys(schedule).filter(k => k !== "name" && schedule[k] === "GLOBAL").map(parseFormsDate),
   PRN: Object.keys(schedule).filter(k => k !== "name" && schedule[k] === "PrN").map(parseFormsDate),
 })
