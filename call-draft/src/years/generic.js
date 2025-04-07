@@ -43,6 +43,12 @@ export const queryFMLA= ({ FMLA }) => date => shift => FMLA.reduce((okay, rotati
   true
 )
 
+const queryGlobal = ({ GLOBAL }) => date => shift => GLOBAL.reduce((okay, rotation_monday) =>
+  okay &&
+  !(getPriorSaturday(rotation_monday) <= date && date <= getNextSunday(rotation_monday)),
+  true
+)
+
 export const queryIR = ({ IR }) => date => shift => IR.reduce((okay, rotation_monday) =>
   okay &&
   !(getPriorSaturday(rotation_monday) <= date && date <= getNextSunday(rotation_monday)),
@@ -72,6 +78,7 @@ export const constraints = [
   { "name": "querySameDay", "fn": querySameDay, "msg": "Same day shift", "type": "hard" },
   { "name": "queryVacation", "fn": queryVacation, "msg": "Vacation week", "type": "hard" },
   { "name": "queryFMLA", "fn": queryFMLA, "msg": "FMLA week", "type": "hard" },
+  { "name": "queryGlobal", "fn": queryGlobal, "msg": "Global health week", "type": "hard" },
 
   // soft restrictions
   { "name": "queryPreferNotDays", "fn": queryPreferNotDays, "msg": "Prefer to not work", "type": "soft" },

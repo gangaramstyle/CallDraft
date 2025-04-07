@@ -8,7 +8,7 @@ export const yearName= "r3"
 
 export const requiredShiftsURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTOSgF3lCULWBp-w5w2NNXXguNUHWKq1_HPQQWiPsjpJStiaTEIMfrI6jAGjkLZZP5Fi1kuBfknlsRJ/pub?gid=1531604218&single=true&output=csv"
 export const residentAssignedScheduleUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSiGp5GYnoXD0Alr0KoLg-PiWePm8byWfrwdCtoiklcCCz91J_nQkJUQP4c9r1QXK2k-mpKHUnur6KB/pub?gid=1609909253&single=true&output=csv"
-export const residentPreferencesUrl = 
+export const residentPreferencesUrl =
 
 const PerShiftCaps = {
   "REGULAR" : {
@@ -58,13 +58,6 @@ const queryPPWeekends = ({ PP }) => date => shift => PP.reduce((okay, rotation_m
   !(getPriorSaturday(rotation_monday) <= date && date <= getNextSunday(rotation_monday)),
   true
 )
-
-const queryGlobal = ({ GLOBAL }) => date => shift => GLOBAL.reduce((okay, rotation_monday) =>
-  okay &&
-  !(getPriorSaturday(rotation_monday) <= date && date <= getNextSunday(rotation_monday)),
-  true
-)
-
 const queryAIRP = ({ AIRP }) => date => shift => AIRP.reduce((okay, rotation_monday) =>
   okay &&
   !(getPriorSaturday(rotation_monday) <= date && date <= getNextSunday(rotation_monday)),
@@ -129,7 +122,6 @@ export const constraints = [
   { "name": "queryNFWeekends", "fn": queryNFWeekends, "msg": "Night float week", "type": "hard" },
   { "name": "queryPPWeekends", "fn": queryPPWeekends, "msg": "Private practice week", "type": "hard" },
   { "name": "querySaturdayNightCallWeekend", "fn": querySaturdayNightCallWeekend, "msg": "Night saturday call <> shift" , "type": "hard"},
-  { "name": "queryGlobal", "fn": queryGlobal, "msg": "Global studies week", "type": "hard" },
   { "name": "queryCHOP", "fn": queryCHOP, "msg": "CHOP week", "type": "hard" },
   { "name": "queryBelowNeuroHolidayCap", "fn": queryBelowNeuroHolidayCap, "msg": "Max Neuro holiday shifts", "type": "hard" },
   { "name": "queryBelowNeuroCap", "fn": queryBelowNeuroCap, "msg": "Max Neuro shifts", "type": "hard" },
