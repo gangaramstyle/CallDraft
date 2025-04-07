@@ -37,6 +37,11 @@ export const queryVacation = ({ VAC }) => date => shift => VAC.reduce((okay, rot
   true
 )
 
+export const queryFMLA= ({ FMLA }) => date => shift => FMLA.reduce((okay, rotation_monday) =>
+  okay &&
+  !(getPriorSaturday(rotation_monday) <= date && date <= getNextSunday(rotation_monday)),
+  true
+)
 
 export const queryIR = ({ IR }) => date => shift => IR.reduce((okay, rotation_monday) =>
   okay &&
@@ -66,6 +71,7 @@ export const constraints = [
   { "name": "queryBlackoutDays", "fn": queryBlackoutDays, "msg": "Blackout", "type": "hard" },
   { "name": "querySameDay", "fn": querySameDay, "msg": "Same day shift", "type": "hard" },
   { "name": "queryVacation", "fn": queryVacation, "msg": "Vacation week", "type": "hard" },
+  { "name": "queryFMLA", "fn": queryFMLA, "msg": "FMLA week", "type": "hard" },
 
   // soft restrictions
   { "name": "queryPreferNotDays", "fn": queryPreferNotDays, "msg": "Prefer to not work", "type": "soft" },
