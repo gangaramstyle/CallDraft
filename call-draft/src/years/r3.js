@@ -7,6 +7,8 @@ export const yearName= "r3"
 // export const residentPreferencesUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQdBkM4XlLYnuATduPs4eQBi77RNtIdaXX2HNVFPHzFgvl7tphlwcDYDiLs32RhDXuyIAZaMdFnJiAw/pub?gid=973200211&single=true&output=csv"
 
 export const requiredShiftsURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTOSgF3lCULWBp-w5w2NNXXguNUHWKq1_HPQQWiPsjpJStiaTEIMfrI6jAGjkLZZP5Fi1kuBfknlsRJ/pub?gid=1531604218&single=true&output=csv"
+export const residentAssignedScheduleUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSiGp5GYnoXD0Alr0KoLg-PiWePm8byWfrwdCtoiklcCCz91J_nQkJUQP4c9r1QXK2k-mpKHUnur6KB/pub?gid=1609909253&single=true&output=csv"
+export const residentPreferencesUrl = 
 
 const PerShiftCaps = {
   "REGULAR" : {
