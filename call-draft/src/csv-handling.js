@@ -3,7 +3,7 @@ import { parseFormsDate } from './utils'
 export const cleanResidentCSV = o => {
   let availableDates = Object.keys(o).filter(c => c.includes("["))
   return {
-    name: o["What is your name? "],
+    name: o["Name"],
     blackout: availableDates.filter(d => o[d] === "Blackout").map(parseFormsDate),
     preferNot: availableDates.filter(d => o[d] === "Prefer Not").map(parseFormsDate),
     preferToWork: availableDates.filter(d => o[d] === "Prefer to Work").map(parseFormsDate),
