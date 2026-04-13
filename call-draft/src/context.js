@@ -1,10 +1,9 @@
 import { createContext, useContext, useEffect } from 'react'
 import { useImmerReducer } from 'use-immer'
-import { DateTime } from 'luxon'
 import { freeze } from 'immer'
 
 import { cleanResidentCSV, extractRotations } from './csv-handling'
-import { sameDay, isHoliday } from './utils'
+import { sameDay, isHoliday, parseFormsDate } from './utils'
 
 import Papa from 'papaparse'
 
@@ -33,24 +32,31 @@ export const EngineProvider = ({ children }) => {
       const data = await fetch(requiredShiftsURL)
         .then((r) => r.text())
         .then(t => Papa.parse(t, {header: true}).data)
-      const parsedData = data.map(d => ({
-        ...d,
-        "date": DateTime.fromISO(d.date),
-      }))
 
-      for (var i = 0; i < data.length; i++) {
-        let date = DateTime.fromISO(data[i].date)
+      const parsedData = data
+        .map(d => {
+          const { Date: dateUpper, date: dateLower, ...rest } = d
+          const raw = (dateLower || dateUpper || '').trim()
+          if (!raw) return null
+          const parsed = parseFormsDate(raw.replace(/^-\s*/, ''))
+          if (!parsed || !parsed.isValid) return null
+          return { ...rest, date: parsed }
+        })
+        .filter(Boolean)
+
+      for (var i = 0; i < parsedData.length; i++) {
+        let date = parsedData[i].date
         if (isHoliday(date)) {
-          var holidayList = [data[i].date]
+          var holidayList = [date.toISODate()]
 
           // holiday falls on a Monday or Tuesday
           if (date.weekday < 3) {
-            if (i > 0) { holidayList.push(data[i - 1].date) }
-            if (i > 1) { holidayList.push(data[i - 2].date) }
+            if (i > 0) { holidayList.push(parsedData[i - 1].date.toISODate()) }
+            if (i > 1) { holidayList.push(parsedData[i - 2].date.toISODate()) }
           // holiday falls on a Thursday or Friday
           } else if (date.weekday > 3) {
-            if (i < data.length - 1) { holidayList.push(data[i + 1].date) }
-            if (i < data.length - 2) { holidayList.push(data[i + 2].date) }
+            if (i < parsedData.length - 1) { holidayList.push(parsedData[i + 1].date.toISODate()) }
+            if (i < parsedData.length - 2) { holidayList.push(parsedData[i + 2].date.toISODate()) }
           } else {
             console.log("Weird year. Holiday is on a Wednesday. Is that even a holiday?")
           }
@@ -135,10 +141,19 @@ const engineReducer = (engine, action) => {
 
     case 'addPreferences': {
       engine.preferences = action.data
-      engine.residents = action.data.map(d => ({
-        ...d,
-        ...engine.rotations.find(({ name }) => name === d.name),
-      }))
+      engine.residents = action.data
+        .map(d => {
+          const rot = engine.rotations.find(({ name }) => name === d.name)
+          if (!rot) {
+            console.warn(
+              `[CallDraft] No rotation entry for resident "${d.name}" — dropping from draft. ` +
+              `Fix the name in the rotation sheet (or the preferences sheet) so the two match.`
+            )
+            return null
+          }
+          return { ...d, ...rot }
+        })
+        .filter(Boolean)
       console.log(engine.residents)
 
       const { assignedShifts } = engine

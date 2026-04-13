@@ -2,9 +2,9 @@ import * as generic from './generic'
 import { getPriorXDay, getNextXDay, getPriorSaturday, getNextSunday, sameDay, isPartOfHolidayWeekend } from '../utils'
 
 export const yearName = "r2"
-export const requiredShiftsURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTOSgF3lCULWBp-w5w2NNXXguNUHWKq1_HPQQWiPsjpJStiaTEIMfrI6jAGjkLZZP5Fi1kuBfknlsRJ/pub?gid=576601428&single=true&output=csv"
-export const residentAssignedScheduleUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSiGp5GYnoXD0Alr0KoLg-PiWePm8byWfrwdCtoiklcCCz91J_nQkJUQP4c9r1QXK2k-mpKHUnur6KB/pub?gid=1353777266&single=true&output=csv"
-export const residentPreferencesUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT0hfDXdZ6J2nOMBhNkDcL1yhDaYDLxN1KdmRIy1uTanhKLFEkPzE7zEyk8Tr0ozvGOZ2N37ADAI-An/pub?gid=407013479&single=true&output=csv"
+export const requiredShiftsURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRtDP1hOaJeA5rWBhZ2VExGdMFjtjIS8e8lZRLBtq3Vhp5j-F4c_OAjh7sToxYlK3M2TTTtyepIlA6_/pub?gid=0&single=true&output=csv"
+export const residentAssignedScheduleUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRtDP1hOaJeA5rWBhZ2VExGdMFjtjIS8e8lZRLBtq3Vhp5j-F4c_OAjh7sToxYlK3M2TTTtyepIlA6_/pub?gid=1197904990&single=true&output=csv"
+export const residentPreferencesUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRtDP1hOaJeA5rWBhZ2VExGdMFjtjIS8e8lZRLBtq3Vhp5j-F4c_OAjh7sToxYlK3M2TTTtyepIlA6_/pub?gid=128226207&single=true&output=csv"
 
 // export const requiredShiftsURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQNefnctzjWPpE-rWcQyTesFq0GJaYjMQ-Ux20oO8bx-3GgLTCT7vkOxMzD0nq_dTviZ_SIyMMmlqt8/pub?gid=1433333551&single=true&output=csv"
 // export const residentAssignedScheduleUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQNefnctzjWPpE-rWcQyTesFq0GJaYjMQ-Ux20oO8bx-3GgLTCT7vkOxMzD0nq_dTviZ_SIyMMmlqt8/pub?gid=530426204&single=true&output=csv"
