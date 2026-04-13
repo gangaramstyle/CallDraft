@@ -18,8 +18,7 @@ const Tally = () => {
     return null
   }
 
-  const shiftNames = Object.keys(requiredShifts[0])
-  shiftNames.shift(0)
+  const shiftNames = Object.keys(requiredShifts[0]).filter(k => k !== "date")
 
   residents.sort((a, b) => a.name.localeCompare(b.name))
 
