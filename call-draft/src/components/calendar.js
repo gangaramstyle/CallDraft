@@ -52,7 +52,9 @@ const Cell = ({ date, shift, render }) => {
       {render.toLocaleString(DateTime.DATE_HUGE)}
     </td>
   }
-  if(render === "0") {
+  // Only shifts explicitly marked "1" are needed. Blanks, "0", undefined,
+  // etc. render as empty so R2s aren't offered Body Call before it starts.
+  if (render !== "1") {
     return <td/>
   }
 
